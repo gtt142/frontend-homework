@@ -51,3 +51,28 @@ QUnit.module('Тестируем функцию get', function () {
 		assert.strictEqual(get(object, '.deep.0'), undefined);		
 	});
 });
+
+QUnit.module('Тестируем функцию get', function () {
+	QUnit.test('get работает правильно c объектами с методами', function (assert) {
+		const object = {
+			foo: 'bar',
+			sayOk: function() {
+				alert ('Ok!');
+			}
+		};
+
+		assert.strictEqual(get(object, '.sayOk'), object.sayOk);
+	});
+});
+
+QUnit.module('Тестируем функцию get', function () {
+	QUnit.test('get работает правильно без указания пути', function (assert) {
+		const object = {
+			foo: {
+				bar: 42
+			}
+		};
+	
+		assert.strictEqual(get(object), undefined);
+	});
+});
