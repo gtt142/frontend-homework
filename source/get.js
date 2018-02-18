@@ -1,17 +1,16 @@
 'use strict';
 
 function get(object, path) {
-    if (path === undefined) {
+    if (!path) {
         return undefined;
     }
     let temp = object;
-    let pathElems = path.split('.').slice(1);
+    const pathElems = path.split('.').slice(1);
     if (pathElems[0]) {
         for (let i = 0; i < pathElems.length; i++) {
             if (temp.hasOwnProperty(pathElems[i])) {
                 temp = temp[pathElems[i]];
-            }
-            else {
+            } else {
                 return undefined;
             }
         }
